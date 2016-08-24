@@ -60,7 +60,6 @@ def main():
 
 if __name__ == "__main__":
     arguments = docopt(__doc__, version=__version__)
-    print(arguments)
     ENVIRONMENT = arguments['--environment']
     logger = set_up_logging(arguments['--logLevel'])
     logger.debug("%s started".format(__appname__))
