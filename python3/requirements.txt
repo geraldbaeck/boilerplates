@@ -1,3 +1,2 @@
-docopt>=0.6.2
-future>=0.15.2
-rainbow-logging-handler>=2.2.2
+docopt
+logzero  # see github.com/metachris/logzero
