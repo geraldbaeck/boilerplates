@@ -24,9 +24,11 @@ DEFAULT_LOGLEVEL    = "INFO"
 DEFAULT_ENVIRONMENT = "development"
 
 # System libraries
+import logging
 
 # 3rd party libraries
 from docopt import docopt
+import logzero
 from logzero import logger
 
 # Own libraries
@@ -36,9 +38,12 @@ def set_up_logging(loglevel=DEFAULT_LOGLEVEL, logtofile=True):
         # setup `logzero` module
         logzero.loglevel(getattr(logging, loglevel))
 
-        # Setup rotating logfile with 3 rotations, each with a maximum filesize of 1MB:
+        # Rotating logfile with 3 rotations, each with 1MB max size
         if logtofile:
-            logzero.logfile("tmp/%s.log".format(__file__.replace(".py", "")), maxBytes=1e6, backupCount=3)
+            logzero.logfile(
+                "log/{!s}.log".format(__file__.replace(".py", "")),
+                maxBytes=1e6,
+                backupCount=3)
 
     except AttributeError:
         raise Exception(
@@ -55,5 +60,5 @@ if __name__ == "__main__":
     arguments = docopt(__doc__, version=__version__)
     ENVIRONMENT = arguments['--environment']
     set_up_logging(arguments['--logLevel'])
-    logger.debug("%s started".format(__appname__))
+    logger.debug("{!s} started".format(__appname__))
     main()

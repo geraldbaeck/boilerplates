@@ -1,0 +1,7 @@
+# dev-requirements.in
+behave     # testing                 # https://pythonhosted.org/behave/
+isort      # sort imports            # https://github.com/timothycrosley/isort
+jedi       # autocompletion          # https://github.com/davidhalter/jedi
+mypy       # Optional Static Typing  # http://mypy-lang.org/
+pip-tools  # dependency manager      # https://github.com/jazzband/pip-tools
+yapf       # formatter               # https://github.com/google/yapf
